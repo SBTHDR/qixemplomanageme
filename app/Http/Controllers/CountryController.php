@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CountryStoreRequest;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,14 @@ class CountryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $countries = Country::all();
+        if ($request->has('search')) {
+            $countries = Country::where('name', 'like', "%{$request->search}%")
+                ->orWhere('country_code', 'like', "%{$request->search}%")->get();
+        }
+        return view('countries.index', compact('countries'));
     }
 
     /**
@@ -24,7 +30,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('countries.create');
     }
 
     /**
@@ -33,9 +39,11 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryStoreRequest $request)
     {
-        //
+        Country::create($request->validated());
+
+        return redirect()->route('countries.index')->with('success', 'Country created successfully!');
     }
 
     /**
@@ -57,7 +65,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('countries.edit', compact('country'));
     }
 
     /**
@@ -67,9 +75,11 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(CountryStoreRequest $request, Country $country)
     {
-        //
+        $country->update($request->validated());
+
+        return redirect()->route('countries.index')->with('success', 'Country Updated successfully!');
     }
 
     /**
@@ -80,6 +90,7 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $country->delete();
+        return redirect()->back()->with('success', 'Country deleted successfully!');
     }
 }
