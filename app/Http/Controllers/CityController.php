@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityStoreRequest;
 use App\Models\City;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -12,9 +14,14 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $cities = City::all();
+        if ($request->has('search')) {
+            $cities = City::where('name', 'like', "%{$request->search}%")->get();
+        }
+
+        return view('cities.index', compact('cities'));
     }
 
     /**
@@ -24,7 +31,9 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $states = State::all();
+
+        return view('cities.create', compact('states'));
     }
 
     /**
@@ -33,9 +42,11 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CityStoreRequest $request)
     {
-        //
+        City::create($request->validated());
+
+        return redirect()->route('cities.index')->with('success', 'City created successfully!');
     }
 
     /**
@@ -57,7 +68,8 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+        $states = State::all();
+        return view('cities.edit', compact('city', 'states'));
     }
 
     /**
@@ -67,9 +79,11 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(CityStoreRequest $request, City $city)
     {
-        //
+        $city->update($request->validated());
+
+        return redirect()->route('cities.index')->with('success', 'City Updated successfully!');
     }
 
     /**
@@ -80,6 +94,7 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        $city->delete();
+        return redirect()->back()->with('success', 'City deleted successfully!');
     }
 }
