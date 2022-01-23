@@ -21,6 +21,20 @@
                 </div>
 
                 <div class="card-body">
+
+                    <form action="{{ route('users.index') }}" method="GET">
+                        @csrf
+                        <div class="form-row align-items-center">
+                          <div class="col-auto">
+                            <input type="search" name="search" class="form-control mb-2" id="inlineFormInput" placeholder="Search by name...">
+                          </div>
+                          
+                          <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-2">Search</button>
+                          </div>
+                        </div>
+                    </form>
+
                     <table class="table table-bordered border-primary">
                         <thead>
                           <tr>
