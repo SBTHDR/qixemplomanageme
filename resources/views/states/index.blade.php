@@ -16,13 +16,13 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    {{ __('Countries List') }}
-                    <a href="{{ route('countries.create') }}" class="btn btn-primary">Create Country</a>
+                    {{ __('States List') }}
+                    <a href="{{ route('states.create') }}" class="btn btn-primary">Create State</a>
                 </div>
 
                 <div class="card-body">
 
-                    <form action="{{ route('countries.index') }}" method="GET">
+                    <form action="{{ route('states.index') }}" method="GET">
                         @csrf
                         <div class="form-row align-items-center">
                           <div class="col-auto">
@@ -39,23 +39,23 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Country name</th>
+                            <th scope="col">State name</th>
                             <th scope="col">Country Code</th>                      
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($countries as $country)
+                          @foreach ($states as $state)
                             <tr>
-                                <th>{{ $country->id }}</th>
-                                <td>{{ $country->name }}</td>
-                                <td>{{ $country->country_code }}</td>
+                                <th>{{ $state->id }}</th>
+                                <td>{{ $state->name }}</td>
+                                <td>{{ $state->country->country_code }}</td>
                                 <td class="d-flex align-items-center">
                                     <div>
-                                        <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{ route('states.edit', $state->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                     </div>
                                     <div class="ml-3">
-                                        <form action="{{ route('countries.destroy', $country->id) }}" method="POST">
+                                        <form action="{{ route('states.destroy', $state->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</button>

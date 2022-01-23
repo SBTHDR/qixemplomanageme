@@ -6,12 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    {{ __('Create Country') }}
-                    <a href="{{ route('countries.index') }}" class="btn btn-primary">Back</a>
+                    {{ __('Create State') }}
+                    <a href="{{ route('states.index') }}" class="btn btn-primary">Back</a>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('countries.store') }}">
+                    <form method="POST" action="{{ route('states.store') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -29,12 +29,17 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="country_code" class="col-md-4 col-form-label text-md-end">{{ __('Country Code') }}</label>
+                            <label for="country_id" class="col-md-4 col-form-label text-md-end">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <input id="country_code" type="text" class="form-control @error('country_code') is-invalid @enderror" name="country_code" value="{{ old('country_code') }}"  autocomplete="country_code" autofocus>
+                                <select name="country_id" class="form-control" aria-label="Default select example">
+                                    <option selected>Select a country</option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
 
-                                @error('country_code')
+                                @error('country_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
