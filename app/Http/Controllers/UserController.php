@@ -99,6 +99,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if (auth()->user()->id === $user->id) {
+            return redirect()->back()->with('success', 'Login user can not be deleted!');
+        }
         $user->delete();
         return redirect()->back()->with('success', 'User deleted successfully!');
     }
