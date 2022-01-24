@@ -35,7 +35,7 @@
                         </div>
                     </form>
 
-                    <table class="table table-bordered border-primary">
+                    <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">#</th>

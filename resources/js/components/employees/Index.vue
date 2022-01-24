@@ -30,19 +30,14 @@
                         </div>
                     </form>
 
-                    <table class="table table-bordered border-primary">
+                    <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Zip</th>
-                            <th scope="col">Birthday</th>
-                            <th scope="col">Date Hire</th>
-                            <th scope="col">Country Name</th>
-                            <th scope="col">State Name</th>
-                            <th scope="col">City Name</th>
+                            <th scope="col">Address</th>                                                        
+                            <th scope="col">Date Hire</th>                                                        
                             <th scope="col">Department Name</th>
                             <th scope="col">Action</th>
                           </tr>
@@ -53,13 +48,8 @@
                                 <th>{{ employee.id }}</th>
                                 <th>{{ employee.first_name }}</th>
                                 <td>{{ employee.last_name }}</td>
-                                <td>{{ employee.address }}</td>
-                                <td>{{ employee.zip_code }}</td>
-                                <td>{{ employee.birthday }}</td>
-                                <td>{{ employee.date_hired }}</td>
-                                <td>{{ employee.country.name }}</td>
-                                <td>{{ employee.state.name }}</td>
-                                <td>{{ employee.city.name }}</td>
+                                <td>{{ employee.address }}</td>                                
+                                <td>{{ employee.date_hired }}</td>                    
                                 <td>{{ employee.department.name }}</td>
                                 <td class="d-flex align-items-center">
                                     <div>

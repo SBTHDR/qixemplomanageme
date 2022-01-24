@@ -5588,16 +5588,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -50522,7 +50512,7 @@ var render = function () {
         _c("div", { staticClass: "card-body" }, [
           _vm._m(1),
           _vm._v(" "),
-          _c("table", { staticClass: "table table-bordered border-primary" }, [
+          _c("table", { staticClass: "table" }, [
             _vm._m(2),
             _vm._v(" "),
             _c(
@@ -50537,17 +50527,7 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(employee.address))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(employee.zip_code))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(employee.birthday))]),
-                  _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(employee.date_hired))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(employee.country.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(employee.state.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(employee.city.name))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(employee.department.name))]),
                   _vm._v(" "),
@@ -50658,17 +50638,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Address")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Zip")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Birthday")]),
-        _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Hire")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Country Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("State Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("City Name")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Department Name")]),
         _vm._v(" "),

@@ -59,6 +59,18 @@
                     <span>Employee Management</span></a>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('users.index') }}">
+                    <i class="fas fa-fw fa-address-card"></i>
+                    <span>User Management</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <!-- Heading -->
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -81,22 +93,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>User Management</span>
-                </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">User Management</h6>
-                        <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
-                        <a class="collapse-item" href="cards.html">Role</a>
-                        <a class="collapse-item" href="cards.html">Permission</a>
-                    </div>
-                </div>
-            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -207,7 +203,7 @@
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    {{-- <script src="{{ asset('js/sb-admin-2.min.js') }}"></script> --}}
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 </body>
 
 </html>
