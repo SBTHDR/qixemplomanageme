@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-4">
         <div id="app">
-            <employees-component></employees-component>
+            <router-view></router-view>
         </div>
     </div>
 @endsection

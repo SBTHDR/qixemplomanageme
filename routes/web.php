@@ -38,4 +38,4 @@ Route::post('/user/{user}/change-password', [ChangePasswordController::class, 'c
 
 Route::get('{any}', function () {
     return view('employees.index');
-})->where('{any}', '.*');
+})->where('any', '.*');

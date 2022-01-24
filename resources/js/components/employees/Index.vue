@@ -2,14 +2,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            
-        
-            
-
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     Employees List
-                    <a href="" class="btn btn-primary">Create Country</a>
+                    <router-link :to="{ name: 'EmployeesCreate' }" class="btn btn-primary">Create Country</router-link>
                 </div>
 
                 <div class="card-body">
@@ -64,7 +60,6 @@
                                     </div>
                                     <div class="ml-3">
                                         <form action="" method="POST">
-                                            
                                             <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</button>
                                         </form>
                                     </div>
