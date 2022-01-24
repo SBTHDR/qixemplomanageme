@@ -9,12 +9,12 @@
                 </div>
 
                 <div class="card-body">
-                    <form >
+                    <form @submit.prevent="storeEmployee">
                         <div class="row mb-3">
                             <label for="first_name" class="col-md-4 col-form-label text-md-end">First Name</label>
 
                             <div class="col-md-6">
-                                <input id="first_name" type="text" class="form-control" name="first_name" autocomplete="first_name" autofocus>
+                                <input v-model="form.first_name" id="first_name" type="text" class="form-control" name="first_name" autocomplete="first_name" autofocus>
                             </div>
                         </div>
 
@@ -22,23 +22,23 @@
                             <label for="last_name" class="col-md-4 col-form-label text-md-end">Last Name</label>
 
                             <div class="col-md-6">
-                                <input id="last_name" type="text" class="form-control" name="last_name" autocomplete="last_name" autofocus>
+                                <input v-model="form.last_name" id="last_name" type="text" class="form-control" name="last_name" autocomplete="last_name" autofocus>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">First Name</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address" autocomplete="address" autofocus>
+                                <input v-model="form.address" id="address" type="text" class="form-control" name="address" autocomplete="address" autofocus>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="zip_code" class="col-md-4 col-form-label text-md-end">First Name</label>
+                            <label for="zip_code" class="col-md-4 col-form-label text-md-end">Zip Code</label>
 
                             <div class="col-md-6">
-                                <input id="zip_code" type="text" class="form-control" name="zip_code" autocomplete="zip_code" autofocus>
+                                <input v-model="form.zip_code" id="zip_code" type="text" class="form-control" name="zip_code" autocomplete="zip_code" autofocus>
                             </div>
                         </div>
 
@@ -94,7 +94,7 @@
                             <label for="date_hired" class="col-md-4 col-form-label text-md-end">Date Hired</label>
 
                             <div class="col-md-6">
-                                <datepicker :bootstrap-styling="true" class="calender-header" placeholder="Pick hired date"></datepicker>
+                                <datepicker v-model="form.date_hired" :bootstrap-styling="true" class="calender-header" placeholder="Pick Hired date"></datepicker>
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@
                             <label for="birthday" class="col-md-4 col-form-label text-md-end">Birthday</label>
 
                             <div class="col-md-6">
-                                <datepicker :bootstrap-styling="true" class="calender-header" placeholder="Pick birthday date"></datepicker>
+                                <datepicker v-model="form.birthday" :bootstrap-styling="true" class="calender-header" placeholder="Pick birthday date"></datepicker>
                             </div>
                         </div>
 
@@ -123,6 +123,7 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker';
+import moment from 'moment';
 
 export default {
     components: {
@@ -184,6 +185,27 @@ export default {
                 .catch(err => {
                     console.log(err)
                 })
+        },
+        storeEmployee() {
+            axios.post('/api/employees', {
+                'department_id': this.form.department_id,
+                'country_id': this.form.country_id,
+                'state_id': this.form.state_id,
+                'city_id': this.form.city_id,
+                'first_name': this.form.first_name,
+                'last_name': this.form.last_name,
+                'address': this.form.address,
+                'zip_code': this.form.zip_code,
+                'birthday': this.formatDate(this.form.birthday),
+                'date_hired': this.formatDate(this.form.date_hired),
+            }).then(res => {
+                console.log(res);
+            })
+        },
+        formatDate(value) {
+            if (value) {
+                return moment(String(value)).format("YYYYMMDD");
+            }
         },
     },
     created () {
