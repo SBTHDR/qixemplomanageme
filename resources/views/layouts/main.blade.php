@@ -21,6 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body id="page-top">
@@ -53,7 +54,7 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">
+                <a class="nav-link" href="/employees">
                     <i class="fas fa-fw fa-address-card"></i>
                     <span>Employee Management</span></a>
             </li>

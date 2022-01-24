@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
@@ -34,3 +35,7 @@ Route::resource('/cities', CityController::class);
 
 Route::resource('/users', UserController::class);
 Route::post('/user/{user}/change-password', [ChangePasswordController::class, 'changePassword'])->name('users.change.password');
+
+Route::get('{any}', function () {
+    return view('employees.index');
+})->where('{any}', '.*');
