@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     Employees List
-                    <router-link :to="{ name: 'EmployeesCreate' }" class="btn btn-primary">Create Country</router-link>
+                    <router-link :to="{ name: 'EmployeesCreate' }" class="btn btn-primary">Create Employee</router-link>
                 </div>
 
                 <div class="card-body">

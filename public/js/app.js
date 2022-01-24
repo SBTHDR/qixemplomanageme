@@ -5452,6 +5452,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     storeEmployee: function storeEmployee() {
+      var _this5 = this;
+
       axios.post('/api/employees', {
         'department_id': this.form.department_id,
         'country_id': this.form.country_id,
@@ -5464,7 +5466,9 @@ __webpack_require__.r(__webpack_exports__);
         'birthday': this.formatDate(this.form.birthday),
         'date_hired': this.formatDate(this.form.date_hired)
       }).then(function (res) {
-        console.log(res);
+        _this5.$router.push({
+          name: 'EmployeesIndex'
+        });
       });
     },
     formatDate: function formatDate(value) {
@@ -50509,7 +50513,7 @@ var render = function () {
                 staticClass: "btn btn-primary",
                 attrs: { to: { name: "EmployeesCreate" } },
               },
-              [_vm._v("Create Country")]
+              [_vm._v("Create Employee")]
             ),
           ],
           1
